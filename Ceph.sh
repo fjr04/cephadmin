@@ -1,6 +1,6 @@
 curl --silent --remote-name --location https://download.ceph.com/rpm-${CEPH_RELEASE=18.2.0}/el9/noarch/cephadm
 chmod +x cephadm
-./cephadm add-repo --release quincy
+./cephadm add-repo --release reef
 ./cephadm install
 ./cephadm install  ceph-common
 
