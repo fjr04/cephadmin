@@ -1,6 +1,10 @@
-#Run on Ceph0 .Update Below Hostnames and IPs according to your infra
+curl --silent --remote-name --location https://download.ceph.com/rpm-${CEPH_RELEASE=18.2.0}/el9/noarch/cephadm
+chmod +x cephadm
+./cephadm add-repo --release quincy
+./cephadm install
+./cephadm install  ceph-common
 
-cephadm bootstrap --mon-ip 10.10.10.10 --initial-dashboard-user "cephadmin" --initial-dashboard-password "CEPHADMIN" --dashboard-password-noupdate --cluster-network=10.10.10.0/24 --allow-fqdn-hostname
+cephadm bootstrap --mon-ip 10.10.10.10 --initial-dashboard-user "cephadmin" --initial-dashboard-password "CEPHADMIN" --dashboard-password-noupdate
 
 
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@controller1
