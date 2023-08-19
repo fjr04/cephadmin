@@ -6,14 +6,12 @@ chmod +x cephadm
 
 cephadm bootstrap --mon-ip 10.10.10.10 --initial-dashboard-user "cephadmin" --initial-dashboard-password "CEPHADMIN" --dashboard-password-noupdate
 
-
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@controller1
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@controller2
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@controller3
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@compute1
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@compute2
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@compute3
-
 
 ceph orch host add controller1 10.10.10.10
 ceph orch host add controller2 10.10.10.11
@@ -22,10 +20,8 @@ ceph orch host add compute1 10.10.10.13
 ceph orch host add compute2 10.10.10.14
 ceph orch host add compute3 10.10.10.15
 
-
 ceph orch apply mon --placement="controller1,controller2,controller3,compute1,compute2,compute3"
 ceph orch apply mgr --placement="controller1,controller2,controller3,compute1,compute1,compute3"
-
 
 ceph orch host label add controller1 osd-node
 ceph orch host label add controller2 osd-node
